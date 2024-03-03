@@ -102,8 +102,8 @@ def optimize_tangents(surfaces, p0, p3, t1, t2):
     delta_mag = norm(p3 - p0)
     if delta_mag == 0: return np.zeros(3), np.zeros(3)
     
-    t1_mag = norm(t1)
-    t2_mag = norm(t2)
+    t1_mag = max(norm(t1), epsilon)
+    t2_mag = max(norm(t2), epsilon)
     # delta_mag_scale = 1
     delta_mag_scale = 0.5
     params_max = (delta_mag_scale*divide(delta_mag, t1_mag), delta_mag_scale*divide(delta_mag, t2_mag))

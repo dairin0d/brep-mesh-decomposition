@@ -466,21 +466,21 @@ class WireGraph:
             self.fit_edge(e, options)
             self.advance()
         
-        max_error = 0.0
-        avg_error = 0.0
-        error_count = 0
-        for e in self.edges:
-            surfaces = e.get_surfaces()
-            for seg_i in range(len(e.tangents)):
-                t1, t2 = e.tangents[seg_i]
-                p0 = e.points[seg_i]
-                p3 = e.points[seg_i+1]
-                error = bezier_error(surfaces, p0, p0+t1, p3+t2, p3)
-                max_error = max(max_error, error)
-                avg_error += error
-                error_count += 1
-        
-        print(f"Edge fit error: max={max_error}, mean={avg_error/max(error_count, 1)}")
+        # max_error = 0.0
+        # avg_error = 0.0
+        # error_count = 0
+        # for e in self.edges:
+        #     surfaces = e.get_surfaces()
+        #     for seg_i in range(len(e.tangents)):
+        #         t1, t2 = e.tangents[seg_i]
+        #         p0 = e.points[seg_i]
+        #         p3 = e.points[seg_i+1]
+        #         error = bezier_error(surfaces, p0, p0+t1, p3+t2, p3)
+        #         max_error = max(max_error, error)
+        #         avg_error += error
+        #         error_count += 1
+        # avg_error /= max(error_count, 1)
+        # print(f"Edge fit error: max={max_error}, mean={avg_error}")
     
     def fit_edge(self, e, options):
         surfaces = e.get_surfaces()
